@@ -57,7 +57,7 @@ I=eye(3);
 
 for k=2:length(t);
   % x(k) = Ax(k-1) + Bu(k) + w(k)
-  w = G*sqrt(var_acceleration)*randn(stream,1,1);
+  w = G*sqrt(var_acceleration)*randn(1,1);
 
   x(:,k) = A*x(:,k-1) + w;   % u=0, so omit the B*u(k) term.
   
@@ -70,7 +70,7 @@ for k=2:length(t);
 
   S1_update_interval = 1; 
   if mod(k, S1_update_interval)==0 
-    v = sqrt(R_1)*randn(stream,1,1); % Find noise to add to the measurement.
+    v = sqrt(R_1)*randn(1,1); % Find noise to add to the measurement.
     y(:,k) = C_1*x(:,k) + v;         % Measure the state.
 
     L = P_prior * C_1' * inv( C_1 * P_prior *C_1' + R_1);
