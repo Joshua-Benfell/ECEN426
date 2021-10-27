@@ -1,7 +1,6 @@
 clear
 clf
 clc
-close all
 end_t = 30;
 meas_interval = 1;
 % Set up the environment (the landmark locations).
@@ -85,51 +84,27 @@ hold off
 figure(4)
 plot(0:end_t, P_Beacons_Acc(:,1:2))
 title("Sensor 1")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(5)
 plot(0:end_t, P_Beacons_Acc(:,3:4))
 title("Sensor 2")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(6)
 plot(0:end_t, P_Beacons_Acc(:,5:6))
 title("Sensor 3")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(7)
 plot(0:end_t, P_Beacons_Acc(:,7:8))
 title("Sensor 4")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(8)
 plot(0:end_t, P_Beacons_Acc(:,9:10))
 title("Sensor 5")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(9)
 plot(0:end_t, P_Beacons_Acc(:,11:12))
 title("Sensor 6")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(10)
 plot(0:end_t, P_Beacons_Acc(:,13:14))
 title("Sensor 7")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 figure(11)
 plot(0:end_t, P_Beacons_Acc(:,15:16))
 title("Sensor 8")
-xlabel("time")
-ylabel("Variance")
-legend("x","y")
 
 %==========================================================================
 % Contoller Code
@@ -138,25 +113,15 @@ legend("x","y")
 function [u1, u2] = controller_command(t, x)
 % Execute a preset plan for the robot motion. 
 % The robot's state (x) is not needed for this particular plan.
-    %u1_plan = [10 10 10 10 10 10 10 ...
-    %           5 5 5 5 5 5 5 ...
-    %           5 5 5 5 5 5 ...
-    %           5 5 5 5 5 5 ...
-    %           10 10 10 10 10 10];
-    %u2_plan = [0 0 0 0 0 0 0 ...
-    %           15 15 15 15 15 15 15 ...
-    %           0 0 0 0 0 0 ...
-    %           15 15 15 15 15 15 ...
-    %           0 0 0 0 0 0];
-    u1_plan = [0 0 0 0 0 0 ...
+    u1_plan = [10 10 10 10 10 10 10 ...
+               5 5 5 5 5 5 5 ...
+               5 5 5 5 5 5 ...
+               5 5 5 5 5 5 ...
+               10 10 10 10 10 10];
+    u2_plan = [0 0 0 0 0 0 0 ...
+               15 15 15 15 15 15 15 ...
                0 0 0 0 0 0 ...
-               0 0 0 0 0 0 ...
-               0 0 0 0 0 0 ...
-               0 0 0 0 0 0];
-    u2_plan = [0 0 0 0 0 0 ...
-               0 0 0 0 0 0 ...
-               0 0 0 0 0 0 ...
-               0 0 0 0 0 0 ...
+               15 15 15 15 15 15 ...
                0 0 0 0 0 0];
     
     if t<length(u1_plan)
